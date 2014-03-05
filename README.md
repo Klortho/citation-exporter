@@ -50,3 +50,36 @@ To run the application from Eclipse, right-click on the project, and select
 *server.xml*, you should then be able to point your browser to
 http://locahost:8080/pmc-citation-service/.
 
+# Backend address
+
+This service accesses a backend to get its citation data from, and the URL of that
+backend should be given in a context variable called `backend_url`.  The default value
+is "test", and is given in the web deployment descriptor *web.xml*, as follows:
+
+```xml
+<context-param>
+  <description>URL of the backend service that provides item data</description>
+  <param-name>backend_url</param-name>
+ <param-value>test</param-value>
+</context-param>
+```
+
+When the value is `test`, the citation data is mock data derived from a hard-coded JSON
+string.
+
+In a production deployment, you should override this context variable with the read URL
+of the backend.  For example, in Tomcat, you can specify it in the *server.xml* file as
+follows.  The "override='false'" attribute ensures that this value overrides the one given
+in the web deployment descriptor.
+
+```xml
+<Context docBase="pmc-citation-service"
+         path="/pmc-citation-service"
+         reloadable="true"
+         source="org.eclipse.jst.jee.server:pmc-citation-service">
+  <Parameter name='backend_url'
+             value='http://domain.com/backend/url'
+             override='false'/>
+</Context>
+```
+
