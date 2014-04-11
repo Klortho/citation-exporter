@@ -106,3 +106,34 @@ in the web deployment descriptor.
 </Context>
 ```
 
+# References / see also
+
+## Java
+
+Using Java 1.6.
+
+* Platform / library [Javadocs](http://docs.oracle.com/javase/6/docs/api/)
+
+## Saxon
+
+For XSLT tranformations
+
+* [Javadocs](http://www.saxonica.com/documentation/Javadoc/index.html)
+
+## citeproc-java
+
+* [Javadocs](http://michel-kraemer.github.io/citeproc-java/api/latest/)
+
+## PMC ID Converter API
+
+* [Documentation](https://www.ncbi.nlm.nih.gov/pmc/tools/id-converter-api/)
+
+## Jackson
+
+We're using the Jackson library to read JSON objects:
+
+* [Home page](https://github.com/FasterXML/jackson-databind)
+* [Javadocs](http://fasterxml.github.io/jackson-databind/javadoc/2.3.0/)
+
+
+
