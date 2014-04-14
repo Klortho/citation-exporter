@@ -106,6 +106,35 @@ in the web deployment descriptor.
 </Context>
 ```
 
+# API
+
+## Parameters:
+
+* **ids** - the types and expected patterns of the values given here are the same as for
+  the [PMC ID converter API](https://www.ncbi.nlm.nih.gov/pmc/tools/id-converter-api/).
+  The type can either be specified explicitly with the idtype parameter, or can be inferred.
+  IDs are always resolved to one of `aiid` or `pmid`.
+* **idtype** - specifies the type of the IDs given in the ids parameter.
+  Any of these types is allowed:
+    * aiid
+    * pmcid - includes versioned ids
+    * pmid
+    * mid
+    * doi
+
+
+# Non-maven dependencies
+
+This depends on [kitty-cache](https://code.google.com/p/kitty-cache/), which is not on
+Maven Central.  To build it and install it to your local maven repository,
+from any temporary directory:
+
+```
+svn checkout http://kitty-cache.googlecode.com/svn/trunk/ kitty-cache-read-only
+cd kitty-cache-read-only
+mvn install
+```
+
 # References / see also
 
 **Java**
@@ -123,6 +152,10 @@ For XSLT tranformations
 **citeproc-java**
 
 * [Javadocs](http://michel-kraemer.github.io/citeproc-java/api/latest/)
+
+**citeproc-js**
+
+* [Manual](http://gsl-nagoya-u.net/http/pub/citeproc-doc.html)
 
 **PMC ID Converter API**
 
