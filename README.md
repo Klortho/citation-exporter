@@ -14,7 +14,7 @@ git clone https://github.com/Klortho/citeproc-java-demo.git
 cd citeproc-java-demo
 ```
 
-This depends on one library, [kitty-cache](https://code.google.com/p/kitty-cache/),
+This depends on a library, [kitty-cache](https://code.google.com/p/kitty-cache/),
 that is not in Maven central, so you'll need to build
 and install that first:
 
@@ -23,6 +23,14 @@ svn checkout http://kitty-cache.googlecode.com/svn/trunk/ kitty-cache-read-only
 cd kitty-cache-read-only
 mvn install
 cd ..
+```
+
+The service also depends on one library XSLT that is pulled from the
+[DtdAnalyzer](https://github.com/ncbi/DtdAnalyzer).  To get it:
+
+```
+wget https://github.com/ncbi/DtdAnalyzer/raw/master/xslt/xml2json-2.0.xsl \
+    -o src/main/webapp/xslt/xml2json-2.0.xsl
 ```
 
 Then build and run this web service:
@@ -124,19 +132,9 @@ Running under Jetty is enabled by the following code in the *pom.xml* file:
 
 Dependencies are declared in the *pom.xml* file, and most are resolved automatically by Maven.
 
-One library, however, [kitty-cache](https://code.google.com/p/kitty-cache/), is not in
-Maven Central. It is declared in the *pom.xml*, but needs to be built and installed to your
-local maven repository.  For example:
+Below is a list of some of the notable dependencies, along with links to documentation,
+useful when doing development.
 
-```
-svn checkout http://kitty-cache.googlecode.com/svn/trunk/ kitty-cache-read-only
-cd kitty-cache-read-only
-mvn install
-```
-
-### References / see also
-
-Here are links to sources of info useful when doing development.
 
 **Java**
 
@@ -168,5 +166,61 @@ We're using the Jackson library to read JSON objects:
 
 * [Home page](https://github.com/FasterXML/jackson-databind)
 * [Javadocs](http://fasterxml.github.io/jackson-databind/javadoc/2.3.0/)
+
+**kitty-cache**
+
+This library, [kitty-cache](https://code.google.com/p/kitty-cache/), is not in
+Maven Central. It is declared in the *pom.xml*, but needs to be built and installed to your
+local maven repository.  For example:
+
+```
+svn checkout http://kitty-cache.googlecode.com/svn/trunk/ kitty-cache-read-only
+cd kitty-cache-read-only
+mvn install
+```
+
+**DtdAnalyzer**
+
+Some of the XSLT conversions of XML to JSON import a library XSLT from the
+[DtdAnalyzer](https://github.com/ncbi/DtdAnalyzer).  The library XSLT is
+[xml2json-2.0.xsl](https://github.com/ncbi/DtdAnalyzer/blob/master/xslt/xml2json-2.0.xsl).
+
+
+
+
+### XSLT conversions
+
+You can try out any given XSLT from the command line, using Saxon Home Edition.
+
+For example, nxml2json.xsl converts PMC NXML into citeproc-json format.  To try it out,
+first set an alias to point to your Saxon jar file, and the catalog
+file to use to resolve the DTDs.  For example:
+
+```
+alias saxon95='java -cp /path/to/saxon9.5.1.4/saxon9he.jar:/pmc/JAVA/saxon9.5.1.4/xml-commons-resolver-1.2/resolver.jar \
+  net.sf.saxon.Transform -catalog:/path/to/catalog.xml '
+```
+
+Then, run the transformations:
+
+```
+cd test
+saxon95 -s:aiid/3362639.nxml -xsl:../xslt/nxml2json.xsl pmcid=PMC3362639
+saxon95 -s:aiid/3352855.nxml -xsl:../xslt/nxml2json.xsl pmid=22615544 pmcid=PMC3352855
+```
+
+### Test / mockup API
+
+**This needs updating**
+
+Clone this repository into a directory that's served by Apache, and then bring up
+test/api-mockup.cgi in your browser.  You will get a list of test cases that can be invoked.
+
+Each test case is a mockup of the output from the API, that can be used for reference
+and for testing.  Test cases are defined in the [test/test-cases.json](browse/test/test-cases.json)
+file.
+
+For example, invoking the CGI with the query string `?ids=PMC3362639&outputformat=citeproc`
+will cause it to return the file [test/PMC3362639.json](browse/test/PMC3362639.json).
 
 
