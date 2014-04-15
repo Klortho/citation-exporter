@@ -65,6 +65,10 @@ template, and change the parameter values as needed.
 
 Then, run Jetty with the `-DjettyOverrideXml=jetty-override-web.xml` command-line switch.
 
+# Configuration parameters (system properties)
+
+* `cache-aiids` - either "true" or "false".  Defaults to "false".
+* `aiid-cache-ttl` - time-to-live for each of the IDs in the ID cache, in seconds.
 
 # Developing in Eclipse
 
