@@ -76,6 +76,7 @@ mvn jetty:run -Djetty.port=11999 -Dcache_aiids=true -Daiid_cache_ttl=8
 * `jetty.port`
 * `cache_aiids` - either "true" or "false".  Defaults to "false".
 * `aiid_cache_ttl` - time-to-live for each of the IDs in the ID cache, in seconds.
+  Defaults to 86400.
 
 # Developing in Eclipse
 
