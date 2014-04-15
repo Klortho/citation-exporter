@@ -5,8 +5,7 @@ tools:
 * [citeproc-js](http://gsl-nagoya-u.net/http/pub/citeproc-doc.html)
 
 
-Running the application
-=======================
+## Running
 
 Clone the repository, and cd to it
 
@@ -35,8 +34,7 @@ mvn jetty:run -Djetty.port=9999
 Point your browser to [http://localhost:9999](http://localhost:9999).
 
 
-Configuration parameters
-========================
+## Configuration parameters
 
 Configuration is controlled with system properties.
 Set these on the run command line, for example:
@@ -58,10 +56,9 @@ Here are the parameters that are defined:
   Default is 86400.
 
 
-API
-===
+## API
 
-## Parameters:
+### Parameters:
 
 * **ids** - the types and expected patterns of the values given here are the same as for
   the [PMC ID converter API](https://www.ncbi.nlm.nih.gov/pmc/tools/id-converter-api/).
@@ -76,26 +73,21 @@ API
     * doi
 
 
+## Development info
 
-
-Development info
-================
-
-## Test item provider
+### Test item provider
 
 When the value of *item_provider" is "test", the citation data is mock data from the
 *src/main/webapp/test* directory.
 
-
-## Eclipse / Tomcat configuration
+### Eclipse / Tomcat configuration
 
 To run the application from Eclipse, right-click on the project, and select
 *Run As* -> *Run on server*.  Depending on your workspace server configuration
 *server.xml*, you should then be able to point your browser to
 http://locahost:12006/pmc-citation-service/.
 
-
-## Jetty configuration
+### Jetty configuration
 
 Running under Jetty is enabled by the following code in the *pom.xml* file:
 
@@ -128,8 +120,7 @@ Running under Jetty is enabled by the following code in the *pom.xml* file:
 </build>
 ```
 
-
-## Dependencies
+### Dependencies
 
 Dependencies are declared in the *pom.xml* file, and most are resolved automatically by Maven.
 
@@ -143,9 +134,7 @@ cd kitty-cache-read-only
 mvn install
 ```
 
-
-
-## References / see also
+### References / see also
 
 Here are links to sources of info useful when doing development.
 
