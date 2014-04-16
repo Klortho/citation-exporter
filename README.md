@@ -54,7 +54,7 @@ mvn jetty:run -Djetty.port=9999 -Dcache_aiids=true -Daiid_cache_ttl=8
 Here are the parameters that are defined:
 
 * `jetty.port`
-* `item_provider` - string specifying which item provider to use.  Default is "test".
+* `item_source` - string specifying which ItemSource to use.  Default is "test".
 * `id_converter_url` - URL of the PMC ID converter API.  Default is
   "http://web.pubmedcentral.nih.gov/utils/idconv/v1.1/".
 * `id_converter_params` - Query string parameters to send to the the PMC ID
@@ -85,7 +85,7 @@ Here are the parameters that are defined:
 
 ### Test item provider
 
-When the value of *item_provider" is "test", the citation data is mock data from the
+When the value of *item_source" is "test", the citation data is mock data from the
 *src/main/webapp/test* directory.
 
 ### Eclipse / Tomcat configuration
