@@ -62,6 +62,8 @@ Here are the parameters that are defined:
 * `cache_aiids` - either "true" or "false".  Default is "false".
 * `aiid_cache_ttl` - time-to-live for each of the IDs in the ID cache, in seconds.
   Default is 86400.
+* `json_from_pmfu` - when "true", the citeproc-json format is retrieved by transforming
+  the PMFU XML on the fly.  Default is "true".
 
 
 ## API
