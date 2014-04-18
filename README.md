@@ -70,14 +70,6 @@ Here are the parameters that are defined:
   of the OASIS catalog file to use when parsing XML files.
 
 
-
-
-
-
-
-
-
-
 ## API
 
 ### Parameters:
