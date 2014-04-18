@@ -55,6 +55,7 @@ Here are the parameters that are defined:
 
 * `jetty.port`
 * `item_source` - string specifying which ItemSource to use.  Default is "test".
+  Other values are "stcache".
 * `id_converter_url` - URL of the PMC ID converter API.  Default is
   "http://web.pubmedcentral.nih.gov/utils/idconv/v1.1/".
 * `id_converter_params` - Query string parameters to send to the the PMC ID
@@ -64,6 +65,17 @@ Here are the parameters that are defined:
   Default is 86400.
 * `json_from_pmfu` - when "true", the citeproc-json format is retrieved by transforming
   the PMFU XML on the fly.  Default is "true".
+* `stcache_pmfu_image` - location of the stcache image file for PMFU records.
+* `xml.catalog.files` - used by the Apache commons CatalogResolver; this is the pathname
+  of the OASIS catalog file to use when parsing XML files.
+
+
+
+
+
+
+
+
 
 
 ## API
@@ -166,8 +178,12 @@ It uses Saxon for XSLT tranformations.
 
 We're using the Jackson library to read JSON objects:
 
-* [Home page](https://github.com/FasterXML/jackson-databind)
+* [Home page](http://wiki.fasterxml.com/JacksonHome)
+* [Data binding](https://github.com/FasterXML/jackson-databind) - includes tutorial
+  on how to use it.
 * [Javadocs](http://fasterxml.github.io/jackson-databind/javadoc/2.3.0/)
+* [Jackson annotations](https://github.com/FasterXML/jackson-annotations) - how to
+  annotate the classes that map to JSON objects
 
 **kitty-cache**
 
