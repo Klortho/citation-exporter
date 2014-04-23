@@ -5,7 +5,7 @@ tools:
 * [citeproc-js](http://gsl-nagoya-u.net/http/pub/citeproc-doc.html)
 
 
-## Running
+## Quick start
 
 Clone the repository, and cd to it
 
@@ -40,6 +40,17 @@ mvn jetty:run -Djetty.port=9999
 ```
 
 Point your browser to [http://localhost:9999](http://localhost:9999).
+
+
+## Running as executable jar with embedded Jetty
+
+```
+mvn package
+mkdir jetty-temp-dir
+java -Djetty.port=11999  -Djava.io.tmpdir=./jetty-temp-dir -Dlog=log -jar target/pmc-citation-exporter-0.1-SNAPSHOT.jar
+```
+
+
 
 
 ## Configuration parameters
@@ -86,8 +97,19 @@ Here are the parameters that are defined:
     * mid
     * doi
 
+## Logging
 
-## Development info
+The location of log files is controlled by the system paramter `log`, which is usually set to
+the value "log" using `-Dlog=log` command-line switch.
+
+Logging is controlled by properties set in the *src/main/resources/log4j.properties*
+file. The log level is controlled by the `log4j.rootLogger` property, and can be set to
+one of TRACE, DEBUG, INFO, WARN, ERROR or FATAL.
+
+
+
+
+## Development
 
 ### Test item provider
 
@@ -100,6 +122,9 @@ To run the application from Eclipse, right-click on the project, and select
 *Run As* -> *Run on server*.  Depending on your workspace server configuration
 *server.xml*, you should then be able to point your browser to
 http://locahost:12006/pmc-citation-service/.
+
+
+
 
 ### Jetty configuration
 
@@ -196,8 +221,6 @@ Some of the XSLT conversions of XML to JSON import a library XSLT from the
 [xml2json-2.0.xsl](https://github.com/ncbi/DtdAnalyzer/blob/master/xslt/xml2json-2.0.xsl).
 
 
-
-
 ### XSLT conversions
 
 You can try out any given XSLT from the command line, using Saxon Home Edition.
@@ -218,19 +241,4 @@ cd test
 saxon95 -s:aiid/3362639.nxml -xsl:../xslt/nxml2json.xsl pmcid=PMC3362639
 saxon95 -s:aiid/3352855.nxml -xsl:../xslt/nxml2json.xsl pmid=22615544 pmcid=PMC3352855
 ```
-
-### Test / mockup API
-
-**This needs updating**
-
-Clone this repository into a directory that's served by Apache, and then bring up
-test/api-mockup.cgi in your browser.  You will get a list of test cases that can be invoked.
-
-Each test case is a mockup of the output from the API, that can be used for reference
-and for testing.  Test cases are defined in the [test/test-cases.json](browse/test/test-cases.json)
-file.
-
-For example, invoking the CGI with the query string `?ids=PMC3362639&outputformat=citeproc`
-will cause it to return the file [test/PMC3362639.json](browse/test/PMC3362639.json).
-
 
