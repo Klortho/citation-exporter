@@ -36,10 +36,10 @@ wget https://github.com/ncbi/DtdAnalyzer/raw/master/xslt/xml2json-2.0.xsl \
 Then build and run this web service:
 
 ```
-mvn jetty:run -Djetty.port=9999
+mvn jetty:run
 ```
 
-Point your browser to [http://localhost:9999](http://localhost:9999).
+Point your browser to [http://localhost:11999](http://localhost:11999).
 
 
 ## Running as executable jar with embedded Jetty
@@ -47,7 +47,8 @@ Point your browser to [http://localhost:9999](http://localhost:9999).
 ```
 mvn package
 mkdir jetty-temp-dir
-java -Djetty.port=11999  -Djava.io.tmpdir=./jetty-temp-dir -Dlog=log -jar target/pmc-citation-exporter-0.1-SNAPSHOT.jar
+java -Djava.io.tmpdir=./jetty-temp-dir \
+  -jar target/pmc-citation-exporter-0.1-SNAPSHOT.jar
 ```
 
 
@@ -59,7 +60,7 @@ Configuration is controlled with system properties.
 Set these on the run command line, for example:
 
 ```
-mvn jetty:run -Djetty.port=9999 -Dcache_aiids=true -Daiid_cache_ttl=8
+mvn jetty:run -Djetty.port=9876 -Dcache_aiids=true -Daiid_cache_ttl=8
 ```
 
 Here are the parameters that are defined:
@@ -79,6 +80,8 @@ Here are the parameters that are defined:
 * `stcache_pmfu_image` - location of the stcache image file for PMFU records.
 * `xml.catalog.files` - used by the Apache commons CatalogResolver; this is the pathname
   of the OASIS catalog file to use when parsing XML files.
+* `log` - location of the log files.  Defaults to the *log* subdirectory of the directory
+  from which the app is run.
 
 
 ## API
