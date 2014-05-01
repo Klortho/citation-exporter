@@ -67,7 +67,7 @@ Here are the parameters that are defined:
 
 * `jetty.port`
 * `item_source` - string specifying which ItemSource to use.  Default is "test".
-  Other values are "stcache".
+  Other values are "stcache", and "stcache-nxml".
 * `id_converter_url` - URL of the PMC ID converter API.  Default is
   "http://web.pubmedcentral.nih.gov/utils/idconv/v1.1/".
 * `id_converter_params` - Query string parameters to send to the the PMC ID
@@ -75,7 +75,7 @@ Here are the parameters that are defined:
 * `cache_aiids` - either "true" or "false".  Default is "false".
 * `aiid_cache_ttl` - time-to-live for each of the IDs in the ID cache, in seconds.
   Default is 86400.
-* `stcache_pmfu_image` - location of the stcache image file for PMFU records.
+* `stcache_image` - location of the stcache image file for PMFU records.
 * `xml.catalog.files` - used by the Apache commons CatalogResolver; this is the pathname
   of the OASIS catalog file to use when parsing XML files.
 * `log` - location of the log files.  Defaults to the *log* subdirectory of the directory
