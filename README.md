@@ -30,7 +30,7 @@ The service also depends on one library XSLT that is pulled from the
 
 ```
 wget https://github.com/ncbi/DtdAnalyzer/raw/master/xslt/xml2json-2.0.xsl \
-    -O src/main/webapp/xslt/xml2json-2.0.xsl
+    -O src/main/resources/xslt/xml2json-2.0.xsl
 ```
 
 Then build and run this web service:
