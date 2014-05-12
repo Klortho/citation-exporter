@@ -27,6 +27,7 @@ public class StcachePmfuItemSource extends ItemSource {
     {
         super(app);
         pmfuImage = System.getProperty("stcache_image");
+        if (pmfuImage == null) throw new IOException("Need a value for the stcache_image system property");
         pmfuStcache = new Pmfu(pmfuImage);
     }
 

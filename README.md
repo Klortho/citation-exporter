@@ -67,7 +67,7 @@ Here are the parameters that are defined:
 
 * `jetty.port`
 * `item_source` - string specifying which ItemSource to use.  Default is "test".
-  Other values are "stcache", and "stcache-nxml".
+  Other values are "stcache-pmfu", and "stcache-nxml".
 * `id_converter_url` - URL of the PMC ID converter API.  Default is
   "http://web.pubmedcentral.nih.gov/utils/idconv/v1.1/".
 * `id_converter_params` - Query string parameters to send to the the PMC ID
