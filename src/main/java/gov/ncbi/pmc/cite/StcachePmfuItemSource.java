@@ -59,18 +59,6 @@ public class StcachePmfuItemSource extends ItemSource {
             if (pmfuBytes == null)
                 throw new IOException("Unable to retrieve PMFU data for " + IdSet.tid(idType, id));
 
-          /*
-            // Check for bad UTF-8 encoding, compare dumping as string vs dumping byte array
-            System.out.println("-----------------------------");
-            IOUtils.write(pmfuBytes, System.out);     //
-
-            System.out.println("-----------------------------");
-            System.out.println(pmfuBytes);
-            for (int i = 0; i < pmfuBytes.length; ++i) {
-                System.out.print(byteToHex2(pmfuBytes[i]) + " ");
-            }
-          */
-
             return app.newDocumentBuilder().parse(new ByteArrayInputStream(pmfuBytes));
 
           /*
